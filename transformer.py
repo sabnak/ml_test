@@ -4,6 +4,8 @@ import numpy as np
 # column index
 rooms_ix, bedrooms_ix, population_ix, household_ix = 3, 4, 5, 6
 
+def indices_of_top_k(arr, k):
+	return np.sort(np.argpartition(np.array(arr), -k)[-k:])
 
 class CombinedAttributesAdder(BaseEstimator, TransformerMixin):
 	def __init__(self, add_bedrooms_per_room=True):  # no *args or **kargs
@@ -31,3 +33,17 @@ class DataFrameSelector(BaseEstimator, TransformerMixin):
 
 	def transform(self, X):
 		return X[self.attribute_names].values
+
+
+class TopFeatureSelector(BaseEstimator, TransformerMixin):
+
+	def __init__(self, feature_list, k):
+		self.feature_list = feature_list
+		self.k = k
+
+	def fit(self, X, y=None):
+		self.feature_indices_ = indices_of_top_k(self.feature_list, self.k)
+		return self
+
+	def transform(self, X, y=None):
+		return X[:, self.feature_indices_]
