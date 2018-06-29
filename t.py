@@ -1,5 +1,9 @@
 import numpy as np
 from scipy.sparse import csr_matrix
+import sys
+
+print(sys.path)
+
 
 X = np.array([
 	[0, 1, 0, 1],
