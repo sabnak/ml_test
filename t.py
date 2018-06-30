@@ -5,12 +5,12 @@ import sys
 # print(sys.path)
 #
 #
-# X = np.array([
-# 	[0, 1, 0, 1],
-# 	[1, 0, 1, 1],
-# 	[0, 0, 0, 1],
-# 	[1, 0, 1, 0]
-# ])
+X = np.array([
+	[0, 1, 0, 1],
+	[1, 0, 1, 1],
+	[0, 0, 0, 1],
+	[1, 0, 1, 0]
+])
 # y = np.array([0, 1, 0, 1])
 #
 # print(X[y == 0])
@@ -24,8 +24,8 @@ import sys
 # print(csr_matrix((data, (row, col)), shape=(3, 3)).toarray())
 
 
-x = np.array([[[0, 3], [1, 3], [2, 3]]])
-print(x)
+# x = np.array([[[0, 3], [1, 3], [2, 3]]])
+# print(x)
 
-print(np.squeeze(x))
+print(X[0:2, 1])
 
