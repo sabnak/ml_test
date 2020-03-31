@@ -1,0 +1,1423 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<div id="ctl00_radWindowManager" style="display:none;">
+	<!-- 2012.3.1016.40 --><div id="ctl00_radWindowManager_alerttemplate" style="display:none;">
+		<div class="rwDialogPopup radalert">			
+			<div class="rwDialogText">
+			{1}				
+			</div>
+			
+			<div>
+				<a  onclick="$find('{0}').close(true);"
+				class="rwPopupButton" href="javascript:void(0);">
+					<span class="rwOuterSpan">
+						<span class="rwInnerSpan">##LOC[OK]##</span>
+					</span>
+				</a>				
+			</div>
+		</div>
+		</div><div id="ctl00_radWindowManager_prompttemplate" style="display:none;">
+		 <div class="rwDialogPopup radprompt">			
+			    <div class="rwDialogText">
+			    {1}				
+			    </div>		
+			    <div>
+				    <script type="text/javascript">
+				    function RadWindowprompt_detectenter(id, ev, input)
+				    {							
+					    if (!ev) ev = window.event;                
+					    if (ev.keyCode == 13)
+					    {															        
+					        var but = input.parentNode.parentNode.getElementsByTagName("A")[0];					        
+					        if (but)
+						    {							
+							    if (but.click) but.click();
+							    else if (but.onclick)
+							    {
+							        but.focus(); var click = but.onclick; but.onclick = null; if (click) click.call(but);							 
+							    }
+						    }
+					       return false;
+					    } 
+					    else return true;
+				    }	 
+				    </script>
+				    <input title="Enter Value" onkeydown="return RadWindowprompt_detectenter('{0}', event, this);" type="text"  class="rwDialogInput" value="{2}" />
+			    </div>
+			    <div>
+				    <a onclick="$find('{0}').close(this.parentNode.parentNode.getElementsByTagName('input')[0].value);"				
+					    class="rwPopupButton" href="javascript:void(0);" ><span class="rwOuterSpan"><span class="rwInnerSpan">##LOC[OK]##</span></span></a>
+				    <a onclick="$find('{0}').close(null);" class="rwPopupButton"  href="javascript:void(0);"><span class="rwOuterSpan"><span class="rwInnerSpan">##LOC[Cancel]##</span></span></a>
+			    </div>
+		    </div>				       
+		</div><div id="ctl00_radWindowManager_confirmtemplate" style="display:none;">
+		<div class="rwDialogPopup radconfirm">			
+			<div class="rwDialogText">
+			{1}				
+			</div>						
+			<div>
+				<a onclick="$find('{0}').close(true);"  class="rwPopupButton" href="javascript:void(0);" ><span class="rwOuterSpan"><span class="rwInnerSpan">##LOC[OK]##</span></span></a>
+				<a onclick="$find('{0}').close(false);" class="rwPopupButton"  href="javascript:void(0);"><span class="rwOuterSpan"><span class="rwInnerSpan">##LOC[Cancel]##</span></span></a>
+			</div>
+		</div>		
+		</div><input id="ctl00_radWindowManager_ClientState" name="ctl00_radWindowManager_ClientState" type="hidden" />
+</div>
+
+<head id="ctl00_Head1"><meta http-equiv="Content-Type" content="text/html; charset=windows-1251" /><meta name="rating" content="General" /><meta name="revisit-after" content="1 day" /><meta name="title" /><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /><link rel="icon" href="/favicon.ico" type="image/x-icon" /><title>
+	Карточка юридического лица
+</title>
+        <link href="../css/generalMasterTemplate.css" rel="stylesheet" type="text/css" />
+        <link href="../css/generalMasterJqueryJdMenu.css" rel="stylesheet" type="text/css" />
+        <link href="../css/menu.css" rel="stylesheet" type="text/css" />
+        <script src="../js/jquery-1.4.4.min.js" type="text/javascript"></script>
+        <script src="../js/jquery.bgiframe.js" type="text/javascript"></script>
+        <script src="../js/jquery.dimensions.js" type="text/javascript"></script>
+        <script src="../js/jquery.jdMenu.js" type="text/javascript"></script>
+        <script src="../js/jquery.positionBy.js" type="text/javascript"></script>
+        <script src="../js/scripts.js" type="text/javascript"></script>
+        <script src="../js/json2min.js" type="text/javascript"></script>
+        <script src="../js/DigitalSignature/blitzsc.js" type="text/javascript"></script>
+        <script src="../js/DigitalSignature/DigitalSignatureNPAPI.js" type="text/javascript"></script>
+        <script src="../js/DigitalSignature/DigitalSignatureBlitz.js" type="text/javascript"></script>
+        <script src="../js/DigitalSignature/DigitalSignature.js" type="text/javascript"></script>
+        <script src="../js/AuthByCertificate.js" type="text/javascript"></script>
+        <script src="../js/MessageBox.js" type="text/javascript"></script>
+    
+    
+    <script type="text/javascript">
+        function deleteCookie(name, path, domain) {
+            if (getCookie(name)) {
+                document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") +
+				"; expires=Thu, 1 Jan 1970 00:00:01 GMT";
+            }
+        }
+        function getCookie(name) {
+            var dc = document.cookie;
+            var prefix = name + "=";
+            var begin = dc.indexOf("; " + prefix);
+            if (begin == -1) {
+                begin = dc.indexOf(prefix);
+                if (begin != 0)
+                    return null;
+            } else
+                begin += 2;
+            var end = document.cookie.indexOf(";", begin);
+            if (end == -1)
+                end = dc.length;
+            return unescape(dc.substring(begin + prefix.length, end));
+        }
+
+        //Для меню
+        function OpenRegistryMenu() {
+            $('#subRegistryMenu').show();
+            $('#subRMVisiblePart').slideDown();
+        }
+
+        function CloseRegistryMenu() {
+            $('#subRegistryMenu').hide();
+            $('#subRMVisiblePart').hide();
+        }
+
+        $(function () {
+            $('#lnkRegistry').mouseover(function () {
+                OpenRegistryMenu();
+                $('#lnkRegistry').addClass("fm_mnu_hover");
+            });
+            $('#subRegistryMenu').mouseleave(function () {
+                CloseRegistryMenu();
+                $('#lnkRegistry').removeClass("fm_mnu_hover");
+            });
+            $('#spnRegistryMenu2').mouseover(function () {
+                CloseRegistryMenu();
+                $('#lnkRegistry').removeClass("fm_mnu_hover");
+            });
+
+        });
+        //----------
+
+    </script>
+<link href="App_Themes/TestTheme/TestTheme.css" type="text/css" rel="stylesheet" /><link href="/WebResource.axd?d=fgf0OrataSTmQmMEQbbdr3_0aJhHkEqpkTxx63RP0-14rT7Nz2hRx8iGV1ZA2xyJruC6lP2aTu7x48-7ShX21UxtMzE5tgw1vq0IEVTaYLKRqt7GpSftBj6zUrfE2WTceaRnjg2&amp;t=637199650591911922" type="text/css" rel="stylesheet" class="Telerik_stylesheet" /><link href="/WebResource.axd?d=oAiU1MmZoqUktxW9Klyj5GtQtmRNCwJr4O4Cfd4zPJdFugGHtHgWDm1VzdMOhTSXwtRffW4HZglzqMdlYu_udxWw1PKTNlbLjQhroyLxAqsjuynod1s1N80siE16Bfu-JiBX2h8VC6sGp-UQN7zPC0QynN81&amp;t=637199650591911922" type="text/css" rel="stylesheet" class="Telerik_stylesheet" /><link href="/WebResource.axd?d=_NSChkBEdLpSfZ5Tu8AU0hz6ktU6FQmNc5ScH6qhdknbqcLhmd0E0Mb8zFnELegW59f-eD3DipKPfbCu6pf2E1Y84uSz-aRO0Ujqc4NBMo22iaRPP0DyXcf_GjO6XJLGXu6oxNTKa4bQKUjqFmG0mAtu9bU1&amp;t=637199650591911922" type="text/css" rel="stylesheet" class="Telerik_stylesheet" /><link href="/WebResource.axd?d=M-QyXj8lLfvSb7BOB2B9by95eK62NBpnPf92VL1Pj-a6mVGCxnk_b9srgsU1iP0lPQ2EPEb6_zKt9Br3MDbUUtJTFiUIYx0OnwFF7gYvdl3A1RKweJcUYeA0HBmEyE-CE9C8J3ef1wHFuicYNf4FBtYyZc8o3BQGyLV1FQ1KBRj1GB3y0&amp;t=637199650591911922" type="text/css" rel="stylesheet" class="Telerik_stylesheet" /><link href="/WebResource.axd?d=X825k7w1bCGvlaASuf7LPjNiJjr258RbHQ2XoQnjxPIKPSdNAus94_9nMyhRa9vK4UqOsq4XlUz9P0WLIU5So5SR32fbGn2curKf8QMym_XT0NSzLw-Jdg4k31obxyxeM_nyaFWZVSAria8tS2oL9JMpE8w1&amp;t=637199650591911922" type="text/css" rel="stylesheet" class="Telerik_stylesheet" /><link href="/WebResource.axd?d=6B3DSQQ9YInUQWvVHHpqjB-FO7CEJ0oUTngWJ_pRUq2uPVpjZQ1DOAkRYNl71rmP3G1oXbdwCR4j4oFdfrz2UKt-E81xxYcaquNMok-BHU8Uk8VgPLrmvp0851Vb26nbpBEkXznDuCQXld4Fq4yxwknCL6o1&amp;t=637199650591911922" type="text/css" rel="stylesheet" class="Telerik_stylesheet" /><meta name="description" content="ООО &quot;УПМ-ХОЛДИНГ&quot;, ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ &quot;УДМУРТСКИЙ ПРОМЫШЛЕННО МЕТАЛЛУРГИЧЕСКИЙ ХОЛДИНГ&quot;, Удмуртская Республика, 426068, РЕСПУБЛИКА УДМУРТСКАЯ, ГОРОД ИЖЕВСК, УЛИЦА АРХИТЕКТОРА П.П.БЕРША, ДОМ 32, ОФИС 24 КАБИНЕТ 1, 1833056761, 1101840003924, Информация о должнике юридическом лице" /><meta name="keywords" content="ООО &quot;УПМ-ХОЛДИНГ&quot;, ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ &quot;УДМУРТСКИЙ ПРОМЫШЛЕННО МЕТАЛЛУРГИЧЕСКИЙ ХОЛДИНГ&quot;, Удмуртская Республика, 426068, РЕСПУБЛИКА УДМУРТСКАЯ, ГОРОД ИЖЕВСК, УЛИЦА АРХИТЕКТОРА П.П.БЕРША, ДОМ 32, ОФИС 24 КАБИНЕТ 1, 1833056761, 1101840003924, Юридическое лицо, сообщения, банкротство, bankruptcy, insolvency, банкротство юридического лица, банкротство предприятия, банкротство индивидуального предпринимателя, несостоятельность юридических лиц, банкротство ооо" /></head>
+<body>
+    
+
+<link rel="stylesheet" type="text/css" href="/css/SelectCertificate.css" media="all" />
+<script src='/js/SelectCertificate.js' type="text/javascript"></script>
+
+<div data-element-type="select-certificate-background" class="select-certificate-background"></div>
+
+<div data-element-type="select-certificate-dialog" class="select-certificate-dialog" style="display: none;">
+    <div class="title">
+        Выбор сертификата для цифровой подписи
+        <button data-element-type="close-button" class="close-button">
+            <span>×</span>
+        </button>
+    </div>
+    <div data-element-type="certificate-list" class="certificate-list"></div>
+    <div class="buttons">
+        <button data-element-type="cancel-button" class="button">
+            Отмена
+        </button>
+        <button data-element-type="select-button" class="button">
+            OK
+        </button>
+    </div>
+
+    <input data-element-type="selected-certificate-id" type="hidden"/>
+    
+    <a href="#" data-element-type="certificate-item-block" class="certificate-item-block" style="display: none;">
+        <h4 data-element-type="certificate-subject" class="subject"></h4>
+        <p data-element-type="certificate-representative" class="issuer"></p> 
+        <p data-element-type="certificate-issuer" class="issuer"></p>  
+        <p data-element-type="certificate-date" class="notice"></p>  
+    </a>
+</div>
+
+    <div id="testpatch" style="text-align: center; display: none">
+        Данная версия является тестовой и предназначена для получения навыка работы с системой
+    </div>
+    <form method="post" action="./OrganizationCard.aspx?ID=1F5869BBCF64EE1B38847EE9EAFD5EFE" onsubmit="javascript:return WebForm_OnSubmit();" id="aspnetForm">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE0MjYxNjQzODNkGAUFGWN0bDAwJGNwaEJvZHkkZ3ZBdVJlcG9ydHMPZ2QFJmN0bDAwJGNwaEJvZHkkVHJhZGVMaXN0JFRyYWRlc0dyaWRWaWV3D2dkBRxjdGwwMCRjcGhCb2R5JGd2S2FkRG9jdW1lbnRzDzwrAAwBCAICZAUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFggFFmN0bDAwJHJhZFdpbmRvd01hbmFnZXIFKWN0bDAwJFByaXZhdGVPZmZpY2UxJGliUHJpdmF0ZU9mZmljZUVudGVyBSFjdGwwMCRQcml2YXRlT2ZmaWNlMSRjYlJlbWVtYmVyTWUFIGN0bDAwJFByaXZhdGVPZmZpY2UxJFJhZFRvb2xUaXAxBR9jdGwwMCRQcml2YXRlT2ZmaWNlMSRpYnRSZXN0b3JlBSJjdGwwMCREZWJ0b3JTZWFyY2gxJGliRGVidG9yU2VhcmNoBRljdGwwMCRjcGhCb2R5JFJhZFRhYlN0cmlwBRpjdGwwMCRjcGhCb2R5JFJhZE11bHRpUGFnZQUYY3RsMDAkY3BoQm9keSRndk1lc3NhZ2VzDzwrAAwBCAIBZDnsRfWLr0fjJKQfEqNaBWIXFNg1" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=X0JcN1sIiE7dcoIS5QcNfxcHVqXdul7pIFx4YVFzLN5wFND_1vB94pW1txSQc1e9-kkfyn_oX7GsEB_UZ7SPMSvKtxw1&amp;t=637103454965614113" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=Bl_7vkzpwz1QWMrtozDrv6WQ0V2Y2dVK-T7MDdW_bULSjydHZxRhJuHa1C5_1cutPhCDRTxwWxx4SnvkLAQsOIfMtwGi5XeFPJ8tG2W4z-spDMFeJVSbbTQQIiflZRUoHdceg8Uwa-zDCNq6pVnjyOVM8041&amp;t=ffffffff93f2983c" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=XC_EPa-NFhcFmhDzCF_GQDSqBc-9hYoyBQ8WIcJS3EJFZKBbeedxzJz-YKMOUNGgLJJGPhcj5C5DREL7Z4iBNKVGBGaDhRIHTciofw0qO2ophZsywVa9EvdMHmgwrEjmjz0UehFpOV6kao3TEk0xH9_G9Xofgmk3rlqGE5eA_LCQA2qQ0&amp;t=ffffffffecf19baa" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=aJzHmpKXsn87ahe2M8kCukoqzBvzW5StRqImOwsbcUKYf6-kUVK0kSlPVCYSNf2nsAV8gjPa_hVXHpsuEK7oRlEUxaOCt6T2fNoWmrNI58TUlF_UuqrR5Ar_G6XkD14Bomcz4qMU-USicl0G3JMwIXj2lNcQ1uvqpelOGcxirbJTZ0me0&amp;t=ffffffffecf19baa" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=uxASqN5zbYavJphOoby6oPgMFfhspCdt34AnHfU4b5FaT2Y4ifFAybbDUv_N4o5gGDx-YTW0TWesyieP0Klzjib6dN9KucUOgjnxicggJxb5bY10WpDuB1wKUiPwPUTl4QiguQ2&amp;t=1f1fff7f" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=yJdoTplHYXFitrTgtYbgV3XGGLp-3tEEAxlne28WLubQV45R7ZuqB0B43ygvUhjvb62dJC1yQxR8BuESK4UkSVdVnf2GmTt6rT0cmvj07bVe68wrnjzynWqPrw1PSkqRJRRR5PnjUzHQXwwPQ7BwK8HFtjw1&amp;t=1f1fff7f" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=hYJQDrMl0iQ7ImV5SuDRBc141IkDA5n9ejfLM5aEVX4n7XPVYrooMZL2iHGv2gFZSI4W1gL9YDmttPG1tLEb-G4bFxjh04-hIOYkhlIjSeNjcLLEJDaIiHZCGRSeMJRTrQ-h6GWRJRUzrYpWzNEvnb1Cdy41&amp;t=1f1fff7f" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=3CmZBdCtK0FNvJRD8UZL9rRgrHxTsuDV4ekJAFkRHKhcizQghHMmqG5Qte6Ddk-YazhoU5Jy6b2dW8lsMWG_J9_iDUblaHrqMvjFT8SKAynWsIT2Gk41-Cw3bA0poqdytaPv3YW_PyYKdW08TRsf4PHxV94XgSZ3UFRfjT73AM3F56vH0&amp;t=1f1fff7f" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=8OUc2dLmljWbfttMS9DSqbi3_y1qyv5EO7uEzQsRGFcU7934pHnt0oECelIqhJYM6Gvgv-wmWtVpL90wSMDqaVgs0DnoEbi1mOCmvzCKab3XChj3muAXiqteshAFeijDxM5O0H4kpKDn8Hbwz0ObuEHGxOM1&amp;t=1f1fff7f" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=bV0LrU9RIv65kzf_n5Uy60YXtq5zGyDrLSZECtIsjiHyFPdiw9OgwGHCK8-ddgi02EaVGSrVWuqBfLN_GldnIMERRaeb0xc41uiY5RMpiiAyjoJzLkEQndHL6ozVzIwjHB48qppUJJq2yNp17lDNPd1n8YI1&amp;t=1f1fff7f" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=jzWCUuso8Sd-khMHnnoHu1PaQBaJQCJq5fFOcXqBOYg497lx-Ee2yD-E6ZrrrCFiYeMvGx0Oqqj3cwmKE4Za9rQ4OJQ10B05IAZOtf-7a1zw-tJfb5mA_dKLprh0R2V6XbjIbAXMR3khdeo0ADMoDke9uRQ1&amp;t=1f1fff7f" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=jaIzBEQxN6n3NsQAJgLTSUwVfrEfzN3NRIT_nOHhgPUTXr6J0SAjtjq5YFZDhHNHvipR-htkNOOq8_KcR1T7tM5EFbKZvttxnR_ENyKiZl9HbYxfbjpbj0_VTL46p0xaXvWr_eT5r6ebGU7nfSqjuwAzOdM1&amp;t=1f1fff7f" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=Vbxwa8x6ua_CTbVSUr330yPt9JMFbc_MQ2fDBTTGC0YXBciH_df-Z6DGswV2bydb5of5AodxWjFnWXWAJSgltTu5ZgQi_7HlBFUsJmuzRUMHyGAw4TLAaA1RgUVY-_OWSRET1TOsDDMn_pCVo78VDygvikg1&amp;t=1f1fff7f" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=sW4n0FFivHPUbceSdCZKqJJbXRirGVnNCdBBAZWjYE7wdoRxDqMU6BjKSykq643sk6Co6zqvyUWlaQJVHDUvZgRnVj6tccooZD4vgFOQlH_zi_u4j1Vy5y53PgYPAgjbozbmHWzZ5dhqbV8r4IMUlghs6j32loHpYoVky-9I1QyV55bZ0&amp;t=1f1fff7f" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=40Fy3AQrhxxgQa4zEgEt3FS5Lx-CqtbyuvhLl7Kge2xOMRjH-7FPV1V5DejZoMPxImoL7UhCdS0CK9faMWdFOl34PTLPDV7nMzwt2bXtLgDVz8kL6KyGXX8v3EaoQHXRWF8Qw_bIBGsC_vaoINd5kvX5STzEWoClnA4FgGqcRIQHz9kw0&amp;t=1f1fff7f" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=Dr-XakFwIHJJAgvfXwSDGZmqwHYzS5qNNUuucw4-SM39-gvEmwJsT0o8QHYNVa6fQN8hYs3CIqFzVyCtOz1qh1Xtp17VX9l_VN3UTBcUY0Io31xYXCNh0xND9MTdM_nXpZpnu0jdDJVBTxl0lpWmSExux7Y1&amp;t=1f1fff7f" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=YF8XiUIshdvAh-B7HBH10Ny3e8JUMUNEvu7-ibqNLfk5XV6SMIyh-CWgGUjXzKAUTAO1_q59BZZWe0OZMTpAD2rHn6nTn2im1Mcu0JSSHRGB-NhkQwdxeb8I_mkx6DuDq0L2RuWDbHLygDvCJsmGa6n5GsMpChumBR3sRA-MUfWWQRD90&amp;t=1f1fff7f" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="10EFF095" />
+	<input type="hidden" name="__PREVIOUSPAGE" id="__PREVIOUSPAGE" value="rAhf3BpLGR2VPBCCMTSbgslAX4Nz-bbfygvreIFgG55QtoHRc6EJHYmI2AkZSy1Cpt4pLmpyWSe00Ys3lbk8VqQi2LjoY3iFno771uzEhfb8HTOH0" />
+</div>
+        <table id="main">
+            <tr>
+                <td id="top" style="vertical-align: top;">
+                    <table width="100%" class="outline_ie7">
+                        <tr>
+                            <td style="width: 35px">
+                                <img alt="" src="../img/header/1x1.gif" width="35px" height="1px" /></td>
+                            <td style="width: 356px">
+                                <a title="Единый федеральный реестр сведений о банкротстве" href="Default.aspx" style="outline: none;"><img alt="Единый федеральный реестр сведений о банкротстве" src="../img/header/logo.gif" width="356px" height="80px" /></a></td>
+                            <td style="text-align: center; white-space: nowrap; padding-top: 20px" class="fm_grey">
+                                <span class="fm_gsm fm_grey">Служба поддержки:</span>
+                                <div><span class="fm_gsm fm_grey">Рабочие дни, 07:00-21:00 (время московское)</span></div>
+                                <div style="padding: 4px 0px;">
+                                    <span class="fm_bigfm_blue">
+                                        8 (495) <b>989-73-68</b>
+                                    </span>
+                                </div>
+                                <div style="padding: 4px 0px;">
+                                    <span class="fm_bigfm_blue">
+                                        8 (800) <b>555-02-24</b>
+                                    </span>
+                                </div>
+                                <span class="fm_gsm fm_grey">e-mail:
+                                    <a id="ctl00_hlTechSupportEmail" href="mailto:bhelp@interfax.ru">bhelp@interfax.ru</a></span>
+                            </td>
+                            <td style="width: 277px; padding: 5px 0px">
+                                
+
+<table width="290" cellspacing="0" cellpadding="0" style="border-width: 0px;">
+	<tr>
+		<td style="width: 5px">
+			<img src="../img/header/form_top_left.gif" width="5px" height="5px" alt="" /></td>
+		<td style="background-image: url(../img/header/form_top_bg.gif)">
+			<img src="../img/header/1x1.gif" width="1px" height="5px" alt="" /></td>
+		<td style="width: 5px">
+			<img src="../img/header/form_top_right.gif" width="5px" height="5px" alt="" /></td>
+	</tr>
+	<tr>
+		<td style="width: 5px; background-image: url(../img/header/form_left.gif)">
+			<img src="../img/header/1x1.gif" width="5px" height="1px" alt="" /></td>
+		<td style="padding: 5px 5px 0px 5px;">
+			<div class="fm_blue fm_gsm" style="padding-left: 20px;">
+				<img src="../img/header/lock.gif" width="10px" height="10px" alt="" />&nbsp; &nbsp; &nbsp; &nbsp;ВХОД В ЛИЧНЫЙ КАБИНЕТ</div>
+			<div style="margin: 5px 0px; background-color: #d3d7dc; height: 1px;">
+				<img src="../img/header/1x1.gif" width="5px" height="1px" alt="" /></div>
+			<table>
+				<tr>
+					<td class="fm_grey fm_gsm">&nbsp; логин &nbsp;</td>
+					<td>
+						<input name="ctl00$PrivateOffice1$tbLogin" type="text" id="ctl00_PrivateOffice1_tbLogin" class="fm_gsm" style="width:150px;" /></td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="fm_grey fm_gsm">&nbsp; пароль &nbsp;</td>
+					<td>
+						<input name="ctl00$PrivateOffice1$tbPassword" type="password" id="ctl00_PrivateOffice1_tbPassword" class="fm_gsm" style="width:150px;" /></td>
+					<td>&nbsp;
+						<input type="image" name="ctl00$PrivateOffice1$ibPrivateOfficeEnter" id="ctl00_PrivateOffice1_ibPrivateOfficeEnter" title="Войти" src="img/header/ent.gif" onclick="if(!CheckInfo()) return false;WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$PrivateOffice1$ibPrivateOfficeEnter&quot;, &quot;&quot;, false, &quot;&quot;, &quot;https://bankrot.fedresurs.ru/backoffice/default.aspx&quot;, false, false))" style="height:21px;width:54px;" />
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td style="width: 5px; background-image: url(../img/header/form_right.gif)">
+			<img src="../img/header/1x1.gif" width="5" height="1" alt="" /></td>
+	</tr>
+	<tr>
+		<td style="width: 5px; background-image: url(../img/header/form_left.gif)">
+			<img src="../img/header/1x1.gif" width="5px" height="1px" alt="" /></td>
+		<td style="padding: 5px 5px 0px 5px;">
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<td style="width: 51px">&nbsp;</td>
+					<td class="fm_grey fm_gsm">
+						<input id="ctl00_PrivateOffice1_cbRememberMe" type="checkbox" name="ctl00$PrivateOffice1$cbRememberMe" /><label for="ctl00_PrivateOffice1_cbRememberMe">Запомнить меня</label>
+						&nbsp;|&nbsp; <a href="Controls/#" id="ctl00_PrivateOffice1_hlRecPsw" class="fm_blue" onclick="return false;">Забыли пароль?</a>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td style="width: 5px; background-image: url(../img/header/form_right.gif)">
+			<img src="../img/header/1x1.gif" width="5" height="1" alt="" /></td>
+	</tr>
+	<tr>
+		<td style="width: 5px; background-image: url(../img/header/form_left.gif); vertical-align: bottom">
+			<img src="../img/header/form_bot_left.gif" width="5" height="22" alt="" /></td>
+		<td style="padding-bottom: 10px; background: url(../img/header/form_bot_bg.gif) repeat-x bottom; vertical-align: top;">
+			</td>
+		<td style="width: 5px; background-image: url(../img/header/form_right.gif); vertical-align: bottom;">
+			<img src="../img/header/form_bot_right.gif" width="5px" height="22px" alt="" /></td>
+	</tr>
+</table>
+
+<div id="ctl00_PrivateOffice1_RadToolTip1" style="background-color:#BBD9EC;border-width:0px;display:none;position:absolute;">
+	
+	<script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$PrivateOffice1$ctl00', 'aspnetForm', ['tctl00$PrivateOffice1$updpRestore','','tctl00$cphBody$DebtorUpdatePanel','','tctl00$cphBody$UpdatePanel3','','tctl00$cphBody$upKadDocuments',''], [], [], 90, 'ctl00');
+	//]]>
+</script>
+
+	<div id="ctl00_PrivateOffice1_updpRestore">
+		
+			<div style="width: 270px; background-color: #bbd9ec;">
+				<div style="clear: both; padding-left: 4px; padding-right: 4px;" align="center">
+					<table>
+						<tr>
+							<td style="background-color: #bbd9ec;" class="fm_gsm fm_grey">e-mail:&nbsp;&nbsp;
+									 <div id="ctl00_PrivateOffice1_ValidationSummary1" style="display:none;">
+
+		</div>
+								<span id="ctl00_PrivateOffice1_RequiredFieldValidator1" style="display:none;"></span>
+								<span id="ctl00_PrivateOffice1_revEmailValidator" style="display:none;"></span>
+							</td>
+							<td style="background-color: #bbd9ec;">
+								<input name="ctl00$PrivateOffice1$tbEmailForPassword" type="text" maxlength="100" id="ctl00_PrivateOffice1_tbEmailForPassword" class="fm_gsm" style="width:150px;" />&nbsp;&nbsp;
+							</td>
+							<td style="background-color: #bbd9ec;">
+								<input type="image" name="ctl00$PrivateOffice1$ibtRestore" id="ctl00_PrivateOffice1_ibtRestore" class="CursorHand" src="img/header/next.gif" alt="Далее" align="absmiddle" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$PrivateOffice1$ibtRestore&quot;, &quot;&quot;, true, &quot;RestorePsw&quot;, &quot;&quot;, false, false))" style="height:21px;width:54px;" />
+							</td>
+						</tr>
+					</table>
+					<div align="center" class="fm_gsm fm_grey">На указанный адрес будет выслан пароль </div>
+				</div>
+				
+			</div>
+		
+	</div>
+<input id="ctl00_PrivateOffice1_RadToolTip1_ClientState" name="ctl00_PrivateOffice1_RadToolTip1_ClientState" type="hidden" />
+</div>
+
+
+<script type="text/javascript">
+	document.getElementById("ctl00_PrivateOffice1_tbPassword").value = '';
+
+	function CheckInfo() {
+		var password = document.getElementById("ctl00_PrivateOffice1_tbPassword").value;
+		var login = document.getElementById("ctl00_PrivateOffice1_tbLogin").value;
+
+		if (login == "") {
+			alert('Введите имя пользователя');
+			return false;
+		}
+
+		if (password == "") {
+			alert('Введите пароль');
+			return false;
+		}
+
+		return true;
+	}
+
+	function specialAlert(alertText) {
+		alert(alertText);
+		var radToolTip = $find("ctl00_PrivateOffice1_RadToolTip1");
+		if (radToolTip.isVisible())
+			radToolTip.hide();
+	}
+
+	function callSpecialAlert(value) {
+		window.setTimeout("specialAlert('" + value + "')", 0);
+	}
+</script>
+
+
+                            </td>
+                            <td style="width: 35px">
+                                <img alt="" src="../img/header/1x1.gif" width="35px" height="1px" /></td>
+                        </tr>
+
+                    </table>
+                    
+                    
+                    <div id="nav" class="personalCabEntry">
+                        <div class="navleft">
+                            <a href="#" id="authLnk" class="lnk-company-cabinet">
+                                <img src="img/header/office.jpg" id="ctl00_Img3" alt="Вход в личный кабинет" width="24" height="24" align="absmiddle" /> ВХОД ПО СЕРТИФИКАТУ
+                            </a>
+                        </div>
+                    </div>
+                    <div data-element-type="modal-background" class="modal-background"></div>
+                    <div data-element-type="dialog-message" class="centered hidden auth-dialog-message">
+                        <table>
+                            <tr><td><pre data-element-type="dialog-message-content"></pre></td></tr>
+                            <tr><td><input type="button" value="OK" data-element-type="close-dialog-message"/></td></tr>
+                        </table>
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <div id="content" class="cont">
+                        <table width="100%" cellspacing="0" cellpadding="0" style="position: relative; z-index: 1000;">
+                            <tr>
+                                <td width="10">
+                                    <img alt="" src="../img/menu/mntop_left.jpg" width="10" height="32" /></td>
+                                <td style="background: url(../img/menu/mntop_bg2.gif)" height="32">
+                                    <table cellspacing="0" cellpadding="0" border="0" class="outline_ie7">
+                                        <tr>
+                                            <td class="fm_mnu">
+                                                <a id="ctl00_lnkMessages" onclick="javascript:deleteCookie(&#39;Messages&#39;);" href="Messages.aspx">СООБЩЕНИЯ</a>
+                                            </td>
+                                            <td class="fm_lgrey">|</td>
+                                            <td class="fm_mnu">
+                                                <a id="ctl00_lnkAuReports" onclick="javascript:deleteCookie(&#39;AuReports&#39;);" href="AuReportList.aspx">ОТЧЕТЫ&nbsp;АУ</a>
+                                            </td>
+                                            <td class="fm_lgrey">|</td>
+                                            <td class="fm_mnu">
+                                                <a id="ctl00_lnkTrades" onclick="javascript:deleteCookie(&#39;Trade&#39;);" href="TradeList.aspx">ТОРГИ</a>
+                                            </td>
+                                            <td class="fm_lgrey">|</td>
+                                            <td class="fm_mnu">
+                                                <a href="#" id="lnkRegistry">РЕЕСТРЫ</a></td>
+                                            <td class="fm_lgrey">|</td>
+                                            <td class="fm_mnu" id="lnkMonitoring">
+                                                <a id="ctl00_hlMonitoringList" href="https://fedresurs.ru/monitoring">МОНИТОРИНГ</a>
+                                            </td>
+                                            <td class="fm_lgrey">|</td>
+                                            <td class="fm_mnu">
+                                                <a id="ctl00_HyperLink8" href="BankruptcyInEAEC.aspx">БАНКРОТСТВО&nbsp;В&nbsp;ЕАЭС</a>
+                                            </td>
+                                            <td class="fm_lgrey">|</td>
+                                            <td class="fm_mnu">
+                                                <a href="https://fedresurs.ru/news?proj=Bankrot">НОВОСТИ</a>
+                                            </td>
+                                            <td class="fm_lgrey">|</td>
+                                            <td class="fm_mnu">
+                                                <a id="ctl00_HyperLinkImportantFacts" href="http://www.fedresurs.ru/">ЮРЛИЦА</a>
+                                            </td>
+                                            <td class="fm_lgrey">|</td>
+                                            <td class="fm_mnu">
+                                                <a id="ctl00_HyperLink9" href="help.aspx">ПОМОЩЬ</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="6"></td>
+                                            <td>
+                                                <div id="subRegistryMenu" style="display: none; position: absolute; margin-top: -22px; z-index: 10">
+                                                    <table>
+                                                        <tr>
+                                                            <td style="background-color: transparent; height: 30px; width: 111px;"></td>
+                                                            <td id="spnRegistryMenu2" style="background-color: transparent; height: 30px; width: 90px;"></td>
+                                                        </tr>
+                                                    </table>
+
+                                                    <div style="width: 200px; background-color: #bbd9ec; display: none" id="subRMVisiblePart">
+                                                        <div class="fm_mnu2">
+                                                            <a id="ctl00_HyperLink1" onclick="javascript:deleteCookie(&#39;debtorsearch&#39;);" href="DebtorsSearch.aspx">
+                                                                Должники
+                                                            </a>
+                                                        </div>
+                                                        <div class="fm_spacer">
+                                                            <img src="../img/menu/1x1.gif" width="1" height="1" alt="" />
+                                                        </div>
+
+                                                        <div class="fm_mnu2">
+                                                            <a id="ctl00_HyperLink2" onclick="javascript:deleteCookie(&#39;SroList&#39;);" href="SroList.aspx">
+                                                                СРО арбитражных управляющих
+                                                            </a>
+                                                        </div>
+                                                        <div class="fm_spacer">
+                                                            <img src="../img/menu/1x1.gif" width="1" height="1" alt="" />
+                                                        </div>
+
+                                                        <div class="fm_mnu2">
+                                                            <a id="ctl00_HyperLink3" onclick="javascript:deleteCookie(&#39;AmListSearch&#39;);" href="ArbitrManagersList.aspx">
+                                                                Арбитражные управляющие
+                                                            </a>
+                                                        </div>
+                                                        <div class="fm_spacer">
+                                                            <img src="../img/menu/1x1.gif" width="1" height="1" alt="" />
+                                                        </div>
+
+                                                        <div class="fm_mnu2">
+                                                            <a id="ctl00_HyperLink4" onclick="javascript:deleteCookie(&#39;TOListSearch&#39;);" href="TradeOrganizers.aspx">
+                                                                Организаторы торгов
+                                                            </a>
+                                                        </div>
+                                                        <div class="fm_spacer">
+                                                            <img src="../img/menu/1x1.gif" width="1" height="1" alt="" />
+                                                        </div>
+
+                                                        <div class="fm_mnu2"> 
+                                                        <a id="ctl00_HyperLink11" onclick="javascript:deleteCookie(&#39;SroTradePlaceList&#39;);" href="SroTradePlaceList.aspx">
+                                                            СРО торговых площадок
+                                                        </a>
+                                                        </div>
+                                                        <div class="fm_spacer">
+                                                            <img src="../img/menu/1x1.gif" width="1" height="1" alt="" />
+                                                        </div>
+
+                                                        <div class="fm_mnu2">
+                                                            <a id="ctl00_HyperLink5" href="TradePlaceList.aspx">
+                                                                Торговые площадки
+                                                            </a>
+                                                        </div>
+                                                        <div class="fm_spacer">
+                                                            <img src="../img/menu/1x1.gif" width="1" height="1" alt="" />
+                                                        </div>
+
+                                                        <div class="fm_mnu2">
+                                                            <a id="ctl00_HyperLink6" onclick="javascript:deleteCookie(&#39;DisqualifyListSearch&#39;);" href="DisqualificantsList.aspx">
+                                                                Дисквалифицированные лица
+                                                            </a>
+                                                        </div>
+                                                        <div class="fm_spacer">
+                                                            <img src="../img/menu/1x1.gif" width="1" height="1" alt="" />
+                                                        </div>
+
+                                                        <div class="fm_mnu2">
+                                                            <a id="ctl00_HyperLink7" href="CommersantMessages.aspx">
+                                                                Сообщения ИД "Коммерсантъ"
+                                                            </a>
+                                                        </div>
+
+                                                        <div style="float: left; width: 5px;">
+                                                            <img src="../img/menu/bot_left.gif" width="5" height="5" alt="" />
+                                                        </div>
+                                                        <div style="float: right; width: 5px;">
+                                                            <img src="../img/menu/bot_right.gif" width="5" height="5" alt="" />
+                                                        </div>
+                                                        <div style="clear: both;"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="10">
+                                    <img src="../img/menu/mntop_right.jpg" width="10" height="32" alt="" /></td>
+                            </tr>
+
+                        </table>
+
+
+
+
+
+                        <table width="100%" style="border-width: 0px; margin-top: 35px; position: relative" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="15" rowspan="2" style="vertical-align: top;">
+                                    <img src="img/menu/bgcontleft.jpg" id="ctl00_Img1" width="15" height="96" />
+                                </td>
+                                <td colspan="2" class="contfield">
+                                    <img src="../img/menu/1x1.gif" width="15" height="10" alt="" /></td>
+                                <td width="15" rowspan="2" style="vertical-align: top;">
+                                    <img src="img/menu/bgcontright.jpg" id="ctl00_Img2" width="15" height="96" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <table id="content" class="table-content">
+                                        <tr>
+                                            <td id="left" class="outline_ie7">
+                                                <div id="ctl00_DebtorSearch1_pDebtorSearchBlock" onkeypress="javascript:return WebForm_FireDefaultButton(event, &#39;ctl00_DebtorSearch1_ibDebtorSearch&#39;)">
+	
+    <table>
+        <tr class="bg_left search">
+            <td width="55">
+                <img src="../img/zoom.png" class="iepng" width="48px" height="46px" />
+            </td>
+            <td width="213">
+                <span>Поиск должников</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="small">
+                    <table>
+                        <tr>
+                            <td>
+                                <input name="ctl00$DebtorSearch1$inputDebtor" type="text" id="ctl00_DebtorSearch1_inputDebtor" value="поиск" class="in" onclick="this.value=&#39;&#39;" />
+                            </td>
+                            <td style="vertical-align:middle !important;">
+                                <input type="image" name="ctl00$DebtorSearch1$ibDebtorSearch" id="ctl00_DebtorSearch1_ibDebtorSearch" title="Найти" src="img/search.jpg" style="vertical-align:middle !important;" />
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                    <a href="/DebtorsSearch.aspx?Name=">Расширенный поиск</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+                                                
+<table>
+    <tr class="bg_left news">
+        <td width="55">
+            <img src="../img/news.png" class="iepng" width="27px" height="40px" alt="" />
+        </td>
+        <td width="213">
+            <span>Новости</span>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <table id="news">
+                
+                        <tr>
+                            <td class="date">
+                                30.03.2020
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text">
+                                <a href="https://fedresurs.ru/news/b27cfcc3-11e5-4df5-93de-a03f580f031e">
+                                    В Минэкономразвития предлагают разрешить гражданам начинать личное банкротство с помощью МФЦ
+                                </a>
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="date">
+                                30.03.2020
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text">
+                                <a href="https://fedresurs.ru/news/fb81c946-89d8-4c98-9ad7-f293058eef97">
+                                    Глава арбитража Москвы отказал компании в ускорении рассмотрения дела о банкротстве экс-главы ПСБ Ананьева
+                                </a>
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="date">
+                                30.03.2020
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text">
+                                <a href="https://fedresurs.ru/news/68adc2d2-5816-4011-9326-ec2c4bfccd36">
+                                    Путин поручил обеспечить финансирование для сохранения устойчивости региональных бюджетов
+                                </a>
+                            </td>
+                        </tr>
+                    
+                <tr>
+                    <td class="more">
+                        <a href="https://fedresurs.ru/news?proj=Bankrot">Все новости</a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+                                                
+<table>
+    <tr class="bg_left links">
+        <td width="55">
+            <img src="../img/links.png" class="iepng" width="33px" height="35px" alt="" />
+        </td>
+        <td width="213">
+            <span>Полезные ссылки</span>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <ul id="links">
+                
+                        <li><a href="http://kad.arbitr.ru/" target="_blank">
+                            Картотека арбитражных дел</a></li>
+                    
+                        <li><a href="http://www.economy.gov.ru/minec/activity/sections/CorpManagment/" target="_blank">
+                            Минэкономразвития России</a></li>
+                    
+                        <li><a href="http://egrul.nalog.ru" target="_blank">
+                            ЕГРЮЛ ФНС РФ</a></li>
+                    
+                        <li><a href=" http://test-bankrot.interfax.ru/default.aspx" target="_blank">
+                            Тестовая версия ЕФРСБ</a></li>
+                    
+                        <li><a href="http://test-facts.interfax.ru/" target="_blank">
+                            Тестовая версия ЕФРСДЮЛ</a></li>
+                    
+                        <li><a href="  http://forum-fedresurs.interfax.ru/" target="_blank">
+                            Форум Федеральных реестров</a></li>
+                    
+                        <li><a href="http://bankrot.fedresurs.ru/Help/FAQ_EFRSB.pdf" target="_blank">
+                            Часто задаваемые вопросы (FAQ)</a></li>
+                    
+            </ul>
+        </td>
+    </tr>
+</table>
+
+                                                
+        <table>
+            <tr class="bg_left monitor">
+                <td width="55">
+                    <img src="../img/monitor.png" width="33px" height="29px" class="iepng" alt="" />
+                </td>
+                <td width="213">
+                    <span>Подписка на мониторинг</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table id="monitor">
+                        <tr>
+                            <td>
+                                На нашем сайте есть возможность подписки на мониторинг
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="more">
+                                <a href="https://fedresurs.ru/monitoring" id="ctl00_Subcribe1_LoginView_hrefAnonymous">Подробнее</a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    
+
+                                            </td>
+                                            <td id="right">
+                                                
+	<script type="text/javascript">
+		function onClientTabSelected(sender, args) {
+			var tab = args.get_tab();
+
+			if (tab) {
+				tab.select();
+			}
+			var multiPage = $find("ctl00_cphBody_RadMultiPage");
+			var exp = new RegExp(tab.get_value() + "$");
+
+			if (multiPage) {
+				var index;
+				var pages = multiPage.get_pageViews();
+
+				for (i = 0; i < pages.get_count() ; i++) {
+					if (exp.test(pages.getPageView(i).get_id()))
+					{
+						index = i;
+					}
+				}
+
+				var page = multiPage.get_pageViews().getPageView(index);
+				page.select();
+				page.show();
+			}
+		}
+
+		$(document).ready(function() {
+			$("[data-item=diff-sign-label]").each(function() {
+				if ($(this).attr("title")) {
+					$(this).addClass("pointer");
+				};
+			});
+		});
+	</script>
+	<table class="path">
+		<tr>
+			<td>
+				<a href="Default.aspx">Главная</a> &raquo; <a href="DebtorsSearch.aspx">Должники</a>
+				&raquo; <b>
+					ООО "УПМ-ХОЛДИНГ"
+				</b>
+			</td>
+		</tr>
+	</table>
+		<h1>Карточка должника - юридического лица</h1>
+		
+		
+		
+	
+	<table class="au">
+	<tr id="ctl00_cphBody_trShortName" class="row">
+		<td nowrap="nowrap" style="width: 300px">
+				
+				Краткое наименование
+			</td>
+		<td>
+				<b>
+					<span id="ctl00_cphBody_lblShortName" data-item="diff-sign-label">ООО "УПМ-ХОЛДИНГ"</span>
+
+				</b>
+			</td>
+	</tr>
+	<tr id="ctl00_cphBody_trFullName">
+		<td nowrap="nowrap">
+				
+				Полное наименование
+			</td>
+		<td>
+				<b>
+					<span id="ctl00_cphBody_lblFullName" data-item="diff-sign-label">ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "УДМУРТСКИЙ ПРОМЫШЛЕННО МЕТАЛЛУРГИЧЕСКИЙ ХОЛДИНГ"</span>
+				</b>
+			</td>
+	</tr>
+	<tr id="ctl00_cphBody_trAddress" class="row">
+		<td nowrap="nowrap">
+				
+				Адрес
+			</td>
+		<td>
+				<b>
+					<span id="ctl00_cphBody_lblAddress" data-item="diff-sign-label">426068, РЕСПУБЛИКА УДМУРТСКАЯ, ГОРОД ИЖЕВСК, УЛИЦА АРХИТЕКТОРА П.П.БЕРША, ДОМ 32, ОФИС 24 КАБИНЕТ 1</span>
+				</b>
+			</td>
+	</tr>
+	<tr id="ctl00_cphBody_trPhone">
+		<td nowrap="nowrap">
+				
+				Телефон
+			</td>
+		<td>
+				<b>
+					<span id="ctl00_cphBody_lblPhone" data-item="diff-sign-label"><font color='Gray'>(н/д)</font></span>
+				</b>
+			</td>
+	</tr>
+	<tr id="ctl00_cphBody_trRegion" class="row">
+		<td nowrap="nowrap">
+				Регион ведения дела о банкротстве
+			</td>
+		<td>
+				<b>
+					<span id="ctl00_cphBody_lblRegion">Удмуртская Республика</span>
+				</b>
+			</td>
+	</tr>
+	<tr id="ctl00_cphBody_trCategoryName">
+		<td nowrap="nowrap">Категория должника
+			</td>
+		<td>
+				<b>
+					<span id="ctl00_cphBody_lblCategoryName">Ликвидируемый должник</span>
+				</b>
+			</td>
+	</tr>
+	<tr id="ctl00_cphBody_trINN" class="row">
+		<td nowrap="nowrap">
+				
+				ИНН
+			</td>
+		<td>
+				<b>
+					<span id="ctl00_cphBody_lblINN" data-item="diff-sign-label">1833056761</span>
+				</b>
+			</td>
+	</tr>
+	<tr id="ctl00_cphBody_trOGRN">
+		<td nowrap="nowrap">ОГРН
+			</td>
+		<td>
+				<b>
+					<span id="ctl00_cphBody_lblOGRN">1101840003924</span>
+				</b>
+			</td>
+	</tr>
+	<tr id="ctl00_cphBody_trOKPO" class="row">
+		<td nowrap="nowrap">ОКПО
+			</td>
+		<td>
+				<b>
+					<span id="ctl00_cphBody_lblOKPO"><font color='Gray'>(н/д)</font></span>
+				</b>
+			</td>
+	</tr>
+	<tr id="ctl00_cphBody_trOkopf">
+		<td nowrap="nowrap">
+				
+				Организационно-правовая форма
+			</td>
+		<td>
+				<b>
+					<span id="ctl00_cphBody_lblOkopf" data-item="diff-sign-label">Общества с ограниченной ответственностью</span>
+				</b>
+			</td>
+	</tr>
+</table>
+
+	<div style="margin-top: 20px;">
+		<div id="ctl00_cphBody_DebtorUpdatePanel">
+	
+				<div id="ctl00_cphBody_RadTabStrip" class="RadTabStrip RadTabStrip_TestTheme RadTabStripTop_TestTheme">
+		<div class="rtsLevel rtsLevel1">
+			<ul class="rtsUL"><li class="rtsLI rtsFirst"><a class="rtsLink rtsSelected" href="#"><span class="rtsOut"><span class="rtsIn"><span class="rtsTxt">Сообщения</span></span></span></a></li><li class="rtsLI rtsLast"><a class="rtsLink rtsAfter" href="#"><span class="rtsOut"><span class="rtsIn"><span class="rtsTxt">Документы КАД</span></span></span></a></li></ul>
+		</div><input id="ctl00_cphBody_RadTabStrip_ClientState" name="ctl00_cphBody_RadTabStrip_ClientState" type="hidden" />
+	</div>
+				<table class="blueline" style="margin-top: 0px;">
+					<tr>
+						<td>&nbsp;
+						</td>
+					</tr>
+				</table>
+				<div id="ctl00_cphBody_RadMultiPage">
+		<div id="ctl00_cphBody_Messages">
+			
+						<div id="ctl00_cphBody_UpdatePanel3">
+				
+								<div>
+					<table class="bank" cellspacing="0" rules="all" border="1" id="ctl00_cphBody_gvMessages" style="border-collapse:collapse;">
+						<tr>
+							<th scope="col">Дата публикации <br/>(время московское)</th><th scope="col">Тип сообщения</th><th scope="col">Кем опубликовано</th><th scope="col">СРО</th>
+						</tr><tr>
+							<td align="center" style="width:12%;white-space:nowrap;">
+												27.03.2020 17:42:36
+											</td><td style="width:28%;">
+												<a title="Просмотр сообщения" href='/MessageWindow.aspx?ID=93F2A84FCB29CFD89074962ED81B012E' onclick="openNewWin('/MessageWindow.aspx?ID=93F2A84FCB29CFD89074962ED81B012E', 'Сообщение', 'yes', '1000', '600'); return false;">
+													Сообщение о результатах проведения собрания кредиторов</a>
+											</td><td style="width:27%;">
+												<a title="Карточка арбитражного управляющего" href="/ArbitrManagerCard.aspx?ID=2b4df335-f2f6-4886-9ab8-f5e94f72e9e3">Солопаев Александр Сергеевич</a>
+											</td><td style="width:33%;">
+												<a title="Карточка саморегулируемой организаци" href="/SroCard.aspx?ID=b782ea03-6502-4b0f-b819-35df5b2e288a">ААУ "Содружество" - Ассоциация Арбитражных Управляющих  "Содружество"</a>
+											</td>
+						</tr><tr class="row">
+							<td align="center" style="width:12%;white-space:nowrap;">
+												11.03.2020 12:13:55
+											</td><td style="width:28%;">
+												<a title="Просмотр сообщения" href='/MessageWindow.aspx?ID=F190A87C6342D7A9ECA4FF7EBEADF62C' onclick="openNewWin('/MessageWindow.aspx?ID=F190A87C6342D7A9ECA4FF7EBEADF62C', 'Сообщение', 'yes', '1000', '600'); return false;">
+													Сообщение о собрании кредиторов</a>
+											</td><td style="width:27%;">
+												<a title="Карточка арбитражного управляющего" href="/ArbitrManagerCard.aspx?ID=2b4df335-f2f6-4886-9ab8-f5e94f72e9e3">Солопаев Александр Сергеевич</a>
+											</td><td style="width:33%;">
+												<a title="Карточка саморегулируемой организаци" href="/SroCard.aspx?ID=b782ea03-6502-4b0f-b819-35df5b2e288a">ААУ "Содружество" - Ассоциация Арбитражных Управляющих  "Содружество"</a>
+											</td>
+						</tr><tr>
+							<td align="center" style="width:12%;white-space:nowrap;">
+												03.03.2020 15:01:57
+											</td><td style="width:28%;">
+												<a title="Просмотр сообщения" href='/MessageWindow.aspx?ID=218E28484EC3639BEE1496DB013563A2' onclick="openNewWin('/MessageWindow.aspx?ID=218E28484EC3639BEE1496DB013563A2', 'Сообщение', 'yes', '1000', '600'); return false;">
+													Сообщение о результатах проведения собрания кредиторов</a>
+											</td><td style="width:27%;">
+												<a title="Карточка арбитражного управляющего" href="/ArbitrManagerCard.aspx?ID=2b4df335-f2f6-4886-9ab8-f5e94f72e9e3">Солопаев Александр Сергеевич</a>
+											</td><td style="width:33%;">
+												<a title="Карточка саморегулируемой организаци" href="/SroCard.aspx?ID=b782ea03-6502-4b0f-b819-35df5b2e288a">ААУ "Содружество" - Ассоциация Арбитражных Управляющих  "Содружество"</a>
+											</td>
+						</tr><tr class="row">
+							<td align="center" style="width:12%;white-space:nowrap;">
+												27.02.2020 15:27:40
+											</td><td style="width:28%;">
+												<a title="Просмотр сообщения" href='/MessageWindow.aspx?ID=73869A9F2B67155B58241793FFD2B8F9' onclick="openNewWin('/MessageWindow.aspx?ID=73869A9F2B67155B58241793FFD2B8F9', 'Сообщение', 'yes', '1000', '600'); return false;">
+													Отчет оценщика об оценке имущества должника</a>
+											</td><td style="width:27%;">
+												<a title="Карточка арбитражного управляющего" href="/ArbitrManagerCard.aspx?ID=2b4df335-f2f6-4886-9ab8-f5e94f72e9e3">Солопаев Александр Сергеевич</a>
+											</td><td style="width:33%;">
+												<a title="Карточка саморегулируемой организаци" href="/SroCard.aspx?ID=b782ea03-6502-4b0f-b819-35df5b2e288a">ААУ "Содружество" - Ассоциация Арбитражных Управляющих  "Содружество"</a>
+											</td>
+						</tr><tr>
+							<td align="center" style="width:12%;white-space:nowrap;">
+												13.02.2020 15:20:34
+											</td><td style="width:28%;">
+												<a title="Просмотр сообщения" href='/MessageWindow.aspx?ID=A4D95D3C2FA510B8ACD4D52A038347B1' onclick="openNewWin('/MessageWindow.aspx?ID=A4D95D3C2FA510B8ACD4D52A038347B1', 'Сообщение', 'yes', '1000', '600'); return false;">
+													Сообщение о собрании кредиторов</a>
+											</td><td style="width:27%;">
+												<a title="Карточка арбитражного управляющего" href="/ArbitrManagerCard.aspx?ID=2b4df335-f2f6-4886-9ab8-f5e94f72e9e3">Солопаев Александр Сергеевич</a>
+											</td><td style="width:33%;">
+												<a title="Карточка саморегулируемой организаци" href="/SroCard.aspx?ID=b782ea03-6502-4b0f-b819-35df5b2e288a">ААУ "Содружество" - Ассоциация Арбитражных Управляющих  "Содружество"</a>
+											</td>
+						</tr><tr class="row">
+							<td align="center" style="width:12%;white-space:nowrap;">
+												22.01.2020 15:15:24
+											</td><td style="width:28%;">
+												<a title="Просмотр сообщения" href='/MessageWindow.aspx?ID=9C36A86C98214DC884C4B95CC98AC3C8' onclick="openNewWin('/MessageWindow.aspx?ID=9C36A86C98214DC884C4B95CC98AC3C8', 'Сообщение', 'yes', '1000', '600'); return false;">
+													Уведомление о получении требований кредитора</a>
+											</td><td style="width:27%;">
+												<a title="Карточка арбитражного управляющего" href="/ArbitrManagerCard.aspx?ID=2b4df335-f2f6-4886-9ab8-f5e94f72e9e3">Солопаев Александр Сергеевич</a>
+											</td><td style="width:33%;">
+												<a title="Карточка саморегулируемой организаци" href="/SroCard.aspx?ID=b782ea03-6502-4b0f-b819-35df5b2e288a">ААУ "Содружество" - Ассоциация Арбитражных Управляющих  "Содружество"</a>
+											</td>
+						</tr><tr>
+							<td align="center" style="width:12%;white-space:nowrap;">
+												16.12.2019 11:46:47
+											</td><td style="width:28%;">
+												<a title="Просмотр сообщения" href='/MessageWindow.aspx?ID=0BAEE94CFDC7530AE7C47C68123E7A5A' onclick="openNewWin('/MessageWindow.aspx?ID=0BAEE94CFDC7530AE7C47C68123E7A5A', 'Сообщение', 'yes', '1000', '600'); return false;">
+													Сообщение о результатах проведения собрания кредиторов</a>
+											</td><td style="width:27%;">
+												<a title="Карточка арбитражного управляющего" href="/ArbitrManagerCard.aspx?ID=2b4df335-f2f6-4886-9ab8-f5e94f72e9e3">Солопаев Александр Сергеевич</a>
+											</td><td style="width:33%;">
+												<a title="Карточка саморегулируемой организаци" href="/SroCard.aspx?ID=b782ea03-6502-4b0f-b819-35df5b2e288a">ААУ "Содружество" - Ассоциация Арбитражных Управляющих  "Содружество"</a>
+											</td>
+						</tr><tr class="row">
+							<td align="center" style="width:12%;white-space:nowrap;">
+												02.12.2019 11:09:32
+											</td><td style="width:28%;">
+												<a title="Просмотр сообщения" href='/MessageWindow.aspx?ID=29CBC36EC9ED1E1BB584B21C8A7316EB' onclick="openNewWin('/MessageWindow.aspx?ID=29CBC36EC9ED1E1BB584B21C8A7316EB', 'Сообщение', 'yes', '1000', '600'); return false;">
+													Сведения о решениях, принятых собранием работников, бывших работников должника</a>
+											</td><td style="width:27%;">
+												<a title="Карточка арбитражного управляющего" href="/ArbitrManagerCard.aspx?ID=2b4df335-f2f6-4886-9ab8-f5e94f72e9e3">Солопаев Александр Сергеевич</a>
+											</td><td style="width:33%;">
+												<a title="Карточка саморегулируемой организаци" href="/SroCard.aspx?ID=b782ea03-6502-4b0f-b819-35df5b2e288a">ААУ "Содружество" - Ассоциация Арбитражных Управляющих  "Содружество"</a>
+											</td>
+						</tr><tr>
+							<td align="center" style="width:12%;white-space:nowrap;">
+												02.12.2019 00:41:00
+											</td><td style="width:28%;">
+												<a title="Просмотр сообщения" href='/MessageWindow.aspx?ID=7A981C39E2FB2B1A9EE43439399EACE0' onclick="openNewWin('/MessageWindow.aspx?ID=7A981C39E2FB2B1A9EE43439399EACE0', 'Сообщение', 'yes', '1000', '600'); return false;">
+													Сведения о результатах инвентаризации имущества должника</a>
+											</td><td style="width:27%;">
+												<a title="Карточка арбитражного управляющего" href="/ArbitrManagerCard.aspx?ID=2b4df335-f2f6-4886-9ab8-f5e94f72e9e3">Солопаев Александр Сергеевич</a>
+											</td><td style="width:33%;">
+												<a title="Карточка саморегулируемой организаци" href="/SroCard.aspx?ID=b782ea03-6502-4b0f-b819-35df5b2e288a">ААУ "Содружество" - Ассоциация Арбитражных Управляющих  "Содружество"</a>
+											</td>
+						</tr><tr class="row">
+							<td align="center" style="width:12%;white-space:nowrap;">
+												28.11.2019 00:13:23
+											</td><td style="width:28%;">
+												<a title="Просмотр сообщения" href='/MessageWindow.aspx?ID=7FDC67CF1A29EA299DE472C437CAE36C' onclick="openNewWin('/MessageWindow.aspx?ID=7FDC67CF1A29EA299DE472C437CAE36C', 'Сообщение', 'yes', '1000', '600'); return false;">
+													Сообщение о собрании кредиторов</a>
+											</td><td style="width:27%;">
+												<a title="Карточка арбитражного управляющего" href="/ArbitrManagerCard.aspx?ID=2b4df335-f2f6-4886-9ab8-f5e94f72e9e3">Солопаев Александр Сергеевич</a>
+											</td><td style="width:33%;">
+												<a title="Карточка саморегулируемой организаци" href="/SroCard.aspx?ID=b782ea03-6502-4b0f-b819-35df5b2e288a">ААУ "Содружество" - Ассоциация Арбитражных Управляющих  "Содружество"</a>
+											</td>
+						</tr><tr>
+							<td align="center" style="width:12%;white-space:nowrap;">
+												19.11.2019 12:43:33
+											</td><td style="width:28%;">
+												<a title="Просмотр сообщения" href='/MessageWindow.aspx?ID=C67B88B8E1479EC94A84C69709329119' onclick="openNewWin('/MessageWindow.aspx?ID=C67B88B8E1479EC94A84C69709329119', 'Сообщение', 'yes', '1000', '600'); return false;">
+													Уведомление о получении требований кредитора</a>
+											</td><td style="width:27%;">
+												<a title="Карточка арбитражного управляющего" href="/ArbitrManagerCard.aspx?ID=2b4df335-f2f6-4886-9ab8-f5e94f72e9e3">Солопаев Александр Сергеевич</a>
+											</td><td style="width:33%;">
+												<a title="Карточка саморегулируемой организаци" href="/SroCard.aspx?ID=b782ea03-6502-4b0f-b819-35df5b2e288a">ААУ "Содружество" - Ассоциация Арбитражных Управляющих  "Содружество"</a>
+											</td>
+						</tr><tr class="row">
+							<td align="center" style="width:12%;white-space:nowrap;">
+												17.11.2019 16:04:38
+											</td><td style="width:28%;">
+												<a title="Просмотр сообщения" href='/MessageWindow.aspx?ID=25386BBD4B87CACA45448FE5EC04516C' onclick="openNewWin('/MessageWindow.aspx?ID=25386BBD4B87CACA45448FE5EC04516C', 'Сообщение', 'yes', '1000', '600'); return false;">
+													Уведомление о получении требований кредитора</a>
+											</td><td style="width:27%;">
+												<a title="Карточка арбитражного управляющего" href="/ArbitrManagerCard.aspx?ID=2b4df335-f2f6-4886-9ab8-f5e94f72e9e3">Солопаев Александр Сергеевич</a>
+											</td><td style="width:33%;">
+												<a title="Карточка саморегулируемой организаци" href="/SroCard.aspx?ID=b782ea03-6502-4b0f-b819-35df5b2e288a">ААУ "Содружество" - Ассоциация Арбитражных Управляющих  "Содружество"</a>
+											</td>
+						</tr><tr>
+							<td align="center" style="width:12%;white-space:nowrap;">
+												12.11.2019 08:53:22
+											</td><td style="width:28%;">
+												<a title="Просмотр сообщения" href='/MessageWindow.aspx?ID=F93B5E295448501A4674F7F5E6C51BC1' onclick="openNewWin('/MessageWindow.aspx?ID=F93B5E295448501A4674F7F5E6C51BC1', 'Сообщение', 'yes', '1000', '600'); return false;">
+													Уведомление о проведении собрания работников, бывших работников должника</a>
+											</td><td style="width:27%;">
+												<a title="Карточка арбитражного управляющего" href="/ArbitrManagerCard.aspx?ID=2b4df335-f2f6-4886-9ab8-f5e94f72e9e3">Солопаев Александр Сергеевич</a>
+											</td><td style="width:33%;">
+												<a title="Карточка саморегулируемой организаци" href="/SroCard.aspx?ID=b782ea03-6502-4b0f-b819-35df5b2e288a">ААУ "Содружество" - Ассоциация Арбитражных Управляющих  "Содружество"</a>
+											</td>
+						</tr><tr class="row">
+							<td align="center" style="width:12%;white-space:nowrap;">
+												18.09.2019 14:26:24
+											</td><td style="width:28%;">
+												<a title="Просмотр сообщения" href='/MessageWindow.aspx?ID=98E251ADFCB1210A38A451127A14197E' onclick="openNewWin('/MessageWindow.aspx?ID=98E251ADFCB1210A38A451127A14197E', 'Сообщение', 'yes', '1000', '600'); return false;">
+													Сообщение о судебном акте</a>
+											</td><td style="width:27%;">
+												<a title="Карточка арбитражного управляющего" href="/ArbitrManagerCard.aspx?ID=2b4df335-f2f6-4886-9ab8-f5e94f72e9e3">Солопаев Александр Сергеевич</a>
+											</td><td style="width:33%;">
+												<a title="Карточка саморегулируемой организаци" href="/SroCard.aspx?ID=b782ea03-6502-4b0f-b819-35df5b2e288a">ААУ "Содружество" - Ассоциация Арбитражных Управляющих  "Содружество"</a>
+											</td>
+						</tr>
+					</table>
+				</div>
+								<table id="ctl00_cphBody_paiMessages_tblPaggingAdvInfo">
+					<tr>
+						<td id="ctl00_cphBody_paiMessages_tdPaggingAdvInfo" width="50%" class="all_page" style="padding-bottom:20px;">
+            Показано с
+            1
+            по
+            14
+            (Всего:
+            14)<br />
+        </td>
+						<td id="ctl00_cphBody_paiMessages_trLinkToAllMessages" width="50%" class="all_page" style="display: none;">
+            <a style="margin-left: 5px;" href="/Messages.aspx">Перейти к разделу
+                Сообщения</a>
+        </td>
+					</tr>
+				</table>
+				
+
+								<input type="hidden" name="ctl00$cphBody$hfMessagesCount" id="ctl00_cphBody_hfMessagesCount" value="14" />
+								
+							
+			</div>
+					
+		</div><div id="ctl00_cphBody_KadDocuments" class="rmpHiddenView">
+			
+						<div class="bold-message" >
+							Данная информация предоставляется в автоматическом режиме Картотекой арбитражных дел
+						</div>
+						<div id="ctl00_cphBody_upKadDocuments">
+				
+								<div>
+					<table class="bank" cellspacing="0" rules="all" border="1" id="ctl00_cphBody_gvKadDocuments" style="width:70%;border-collapse:collapse;">
+						<tr>
+							<th scope="col">Дата документа</th><th scope="col">Тип документа</th><th scope="col">Наименование</th>
+						</tr><tr>
+							<td align="center" style="width:10%;white-space:nowrap;">12.03.2020</td><td align="left" style="width:10%;">Определение</td><td style="width:80%;">
+												<img src="img/ico_doc.png" id="ctl00_cphBody_gvKadDocuments_ctl02_docIcon" border="0" class="ico" />
+												<a href="http://kad.arbitr.ru/PdfDocument/a347d043-5023-4fef-8689-f7bbb0295168/A71_10486_2019_Opredelenie_20200312.pdf" target="_blank">
+													Об удовлетворении ходатайства об обязании должника, руководителя, бывшего руководителя должника передать документы (имущество) арбитражному управляющему
+												</a>
+											</td>
+						</tr><tr class="row">
+							<td align="center" style="width:10%;white-space:nowrap;">10.03.2020</td><td align="left" style="width:10%;">Прочие судебные документы</td><td style="width:80%;">
+												<img src="img/ico_doc.png" id="ctl00_cphBody_gvKadDocuments_ctl03_docIcon" border="0" class="ico" />
+												<a href="http://kad.arbitr.ru/PdfDocument/e776b430-70f0-4da8-bac8-83722754fcbf/A71_10486_2019_Prochie_sudebnye_dokumenty_20200310.pdf" target="_blank">
+													Резолютивная часть определения суда
+												</a>
+											</td>
+						</tr><tr>
+							<td align="center" style="width:10%;white-space:nowrap;">04.03.2020</td><td align="left" style="width:10%;">Определение</td><td style="width:80%;">
+												<img src="img/ico_doc.png" id="ctl00_cphBody_gvKadDocuments_ctl04_docIcon" border="0" class="ico" />
+												<a href="http://kad.arbitr.ru/PdfDocument/a3babe0f-a83f-483c-bb9e-e95f150e88a1/A71_10486_2019_Opredelenie_20200304.pdf" target="_blank">
+													О продлении срока конкурсного производства
+												</a>
+											</td>
+						</tr><tr class="row">
+							<td align="center" style="width:10%;white-space:nowrap;">02.03.2020</td><td align="left" style="width:10%;">Определение</td><td style="width:80%;">
+												<img src="img/ico_doc.png" id="ctl00_cphBody_gvKadDocuments_ctl05_docIcon" border="0" class="ico" />
+												<a href="http://kad.arbitr.ru/PdfDocument/794955e3-d7d1-4143-aa3f-a7d5fa6822b5/A71_10486_2019_Opredelenie_20200302.pdf" target="_blank">
+													Об отложении рассмотрения заявления/жалобы
+												</a>
+											</td>
+						</tr><tr>
+							<td align="center" style="width:10%;white-space:nowrap;">11.02.2020</td><td align="left" style="width:10%;">Определение</td><td style="width:80%;">
+												<img src="img/ico_doc.png" id="ctl00_cphBody_gvKadDocuments_ctl06_docIcon" border="0" class="ico" />
+												<a href="http://kad.arbitr.ru/PdfDocument/302724db-1adc-4d0c-b5a1-fb6bcf2affa4/A71_10486_2019_Opredelenie_20200211.pdf" target="_blank">
+													О включении требований в реестр требований кредиторов
+												</a>
+											</td>
+						</tr><tr class="row">
+							<td align="center" style="width:10%;white-space:nowrap;">04.02.2020</td><td align="left" style="width:10%;">Прочие судебные документы</td><td style="width:80%;">
+												<img src="img/ico_doc.png" id="ctl00_cphBody_gvKadDocuments_ctl07_docIcon" border="0" class="ico" />
+												<a href="http://kad.arbitr.ru/PdfDocument/98495b1a-ce60-4376-8d78-6e34daac6767/A71_10486_2019_Prochie_sudebnye_dokumenty_20200204.pdf" target="_blank">
+													Резолютивная часть определения суда
+												</a>
+											</td>
+						</tr><tr>
+							<td align="center" style="width:10%;white-space:nowrap;">29.01.2020</td><td align="left" style="width:10%;">Определение</td><td style="width:80%;">
+												<img src="img/ico_doc.png" id="ctl00_cphBody_gvKadDocuments_ctl08_docIcon" border="0" class="ico" />
+												<a href="http://kad.arbitr.ru/PdfDocument/98ff584c-9e87-43f7-b8af-aa2a72931e7c/A71_10486_2019_Opredelenie_20200129.pdf" target="_blank">
+													Об отложении рассмотрения заявления/жалобы
+												</a>
+											</td>
+						</tr><tr class="row">
+							<td align="center" style="width:10%;white-space:nowrap;">27.01.2020</td><td align="left" style="width:10%;">Определение</td><td style="width:80%;">
+												<img src="img/ico_doc.png" id="ctl00_cphBody_gvKadDocuments_ctl09_docIcon" border="0" class="ico" />
+												<a href="http://kad.arbitr.ru/PdfDocument/d6872a54-08c9-4be4-8a2a-1dbbc422181e/A71_10486_2019_Opredelenie_20200127.pdf" target="_blank">
+													О принятии заявления об установлении размера требований кредиторов к рассмотрению
+												</a>
+											</td>
+						</tr><tr>
+							<td align="center" style="width:10%;white-space:nowrap;">20.01.2020</td><td align="left" style="width:10%;">Определение</td><td style="width:80%;">
+												<img src="img/ico_doc.png" id="ctl00_cphBody_gvKadDocuments_ctl10_docIcon" border="0" class="ico" />
+												<a href="http://kad.arbitr.ru/PdfDocument/f5e92905-e46d-4cfc-bd64-ed16e7be9096/A71_10486_2019_Opredelenie_20200120.pdf" target="_blank">
+													О включении требований в реестр требований кредиторов
+												</a>
+											</td>
+						</tr><tr class="row">
+							<td align="center" style="width:10%;white-space:nowrap;">15.01.2020</td><td align="left" style="width:10%;">Прочие судебные документы</td><td style="width:80%;">
+												<img src="img/ico_doc.png" id="ctl00_cphBody_gvKadDocuments_ctl11_docIcon" border="0" class="ico" />
+												<a href="http://kad.arbitr.ru/PdfDocument/12092be1-597a-49df-8fb9-2e76693ad946/A71_10486_2019_Prochie_sudebnye_dokumenty_20200115.pdf" target="_blank">
+													Резолютивная часть определения суда
+												</a>
+											</td>
+						</tr><tr>
+							<td align="center" style="width:10%;white-space:nowrap;">13.01.2020</td><td align="left" style="width:10%;">Определение</td><td style="width:80%;">
+												<img src="img/ico_doc.png" id="ctl00_cphBody_gvKadDocuments_ctl12_docIcon" border="0" class="ico" />
+												<a href="http://kad.arbitr.ru/PdfDocument/7b39b199-e285-4c6c-a4d0-f92edd1c26f8/A71_10486_2019_Opredelenie_20200113.pdf" target="_blank">
+													О принятии заявления об установлении размера требований кредиторов к рассмотрению
+												</a>
+											</td>
+						</tr><tr class="row">
+							<td align="center" style="width:10%;white-space:nowrap;">09.12.2019</td><td align="left" style="width:10%;">Определение</td><td style="width:80%;">
+												<img src="img/ico_doc.png" id="ctl00_cphBody_gvKadDocuments_ctl13_docIcon" border="0" class="ico" />
+												<a href="http://kad.arbitr.ru/PdfDocument/0fe0aca5-7691-4d88-9d80-7453e55539f2/A71_10486_2019_Opredelenie_20191209.pdf" target="_blank">
+													О принятии заявления об установлении размера требований кредиторов к рассмотрению
+												</a>
+											</td>
+						</tr><tr>
+							<td align="center" style="width:10%;white-space:nowrap;">03.12.2019</td><td align="left" style="width:10%;">Определение</td><td style="width:80%;">
+												<img src="img/ico_doc.png" id="ctl00_cphBody_gvKadDocuments_ctl14_docIcon" border="0" class="ico" />
+												<a href="http://kad.arbitr.ru/PdfDocument/dad2c3ed-f216-4e9d-a735-599e81bd4475/A71_10486_2019_Opredelenie_20191203.pdf" target="_blank">
+													Об оставлении заявления без движения
+												</a>
+											</td>
+						</tr><tr class="row">
+							<td align="center" style="width:10%;white-space:nowrap;">29.11.2019</td><td align="left" style="width:10%;">Определение</td><td style="width:80%;">
+												<img src="img/ico_doc.png" id="ctl00_cphBody_gvKadDocuments_ctl15_docIcon" border="0" class="ico" />
+												<a href="http://kad.arbitr.ru/PdfDocument/4331bce2-e5a1-4f6a-bedd-72b5690eb035/A71_10486_2019_Opredelenie_20191129.pdf" target="_blank">
+													О принятии заявления (ходатайства) к рассмотрению
+												</a>
+											</td>
+						</tr><tr>
+							<td align="center" style="width:10%;white-space:nowrap;">26.11.2019</td><td align="left" style="width:10%;">Определение</td><td style="width:80%;">
+												<img src="img/ico_doc.png" id="ctl00_cphBody_gvKadDocuments_ctl16_docIcon" border="0" class="ico" />
+												<a href="http://kad.arbitr.ru/PdfDocument/a8b1ce91-bc06-4727-a186-5c6f17bdd5a1/A71_10486_2019_Opredelenie_20191126.pdf" target="_blank">
+													Об оставлении заявления без движения
+												</a>
+											</td>
+						</tr><tr class="row">
+							<td align="center" style="width:10%;white-space:nowrap;">15.11.2019</td><td align="left" style="width:10%;">Определение</td><td style="width:80%;">
+												<img src="img/ico_doc.png" id="ctl00_cphBody_gvKadDocuments_ctl17_docIcon" border="0" class="ico" />
+												<a href="http://kad.arbitr.ru/PdfDocument/b6d62c00-09e8-4806-84f8-343c3ae96098/A71_10486_2019_Opredelenie_20191115.pdf" target="_blank">
+													О принятии заявления об установлении размера требований кредиторов к рассмотрению
+												</a>
+											</td>
+						</tr><tr>
+							<td align="center" style="width:10%;white-space:nowrap;">19.09.2019</td><td align="left" style="width:10%;">Решения и постановления</td><td style="width:80%;">
+												<img src="img/ico_doc.png" id="ctl00_cphBody_gvKadDocuments_ctl18_docIcon" border="0" class="ico" />
+												<a href="http://kad.arbitr.ru/PdfDocument/a75f79db-8e59-44ff-90b8-2339af8b6982/A71_10486_2019_Reshenija_i_postanovlenija_20190919.pdf" target="_blank">
+													Решение о признании должника банкротом и об открытии конкурсного производства
+												</a>
+											</td>
+						</tr><tr class="row">
+							<td align="center" style="width:10%;white-space:nowrap;">19.09.2019</td><td align="left" style="width:10%;">Определение</td><td style="width:80%;">
+												<img src="img/ico_doc.png" id="ctl00_cphBody_gvKadDocuments_ctl19_docIcon" border="0" class="ico" />
+												<a href="http://kad.arbitr.ru/PdfDocument/8d39a4d7-867b-418c-a9cc-a15c8cacb1d5/A71_10486_2019_Opredelenie_20190919.pdf" target="_blank">
+													Об утверждении конкурсного управляющего
+												</a>
+											</td>
+						</tr><tr>
+							<td align="center" style="width:10%;white-space:nowrap;">16.09.2019</td><td align="left" style="width:10%;">Прочие судебные документы</td><td style="width:80%;">
+												<img src="img/ico_doc.png" id="ctl00_cphBody_gvKadDocuments_ctl20_docIcon" border="0" class="ico" />
+												<a href="http://kad.arbitr.ru/PdfDocument/15cfaff3-0616-418d-b10b-d44ca729928e/A71_10486_2019_Prochie_sudebnye_dokumenty_20190916.pdf" target="_blank">
+													Резолютивная часть решения по делу о несостоятельности (банкротстве)
+												</a>
+											</td>
+						</tr><tr class="row">
+							<td align="center" style="width:10%;white-space:nowrap;">15.08.2019</td><td align="left" style="width:10%;">Определение</td><td style="width:80%;">
+												<img src="img/ico_doc.png" id="ctl00_cphBody_gvKadDocuments_ctl21_docIcon" border="0" class="ico" />
+												<a href="http://kad.arbitr.ru/PdfDocument/c4870650-79f6-45ed-b1c0-8ae355ecabc9/A71_10486_2019_Opredelenie_20190815.pdf" target="_blank">
+													Об отложении судебного разбирательства
+												</a>
+											</td>
+						</tr><tr class="pager" align="right">
+							<td colspan="3"><table>
+								<tr>
+									<td><span>1</span></td><td><a href="javascript:__doPostBack(&#39;ctl00$cphBody$gvKadDocuments&#39;,&#39;Page$2&#39;)">2</a></td>
+								</tr>
+							</table></td>
+						</tr>
+					</table>
+				</div>
+								<table id="ctl00_cphBody_paiKadDocuments_tblPaggingAdvInfo" style="position: relative; bottom: 25px">
+					<tr>
+						<td id="ctl00_cphBody_paiKadDocuments_tdPaggingAdvInfo" width="50%" class="all_page">
+            Показано с
+            1
+            по
+            20
+            (Всего:
+            22)<br />
+        </td>
+						<td id="ctl00_cphBody_paiKadDocuments_trLinkToAllMessages" width="50%" class="all_page" style="display: none;">
+            <a style="margin-left: 5px;" href="/Messages.aspx">Перейти к разделу
+                Сообщения</a>
+        </td>
+					</tr>
+				</table>
+				
+
+								<input type="hidden" name="ctl00$cphBody$hfKadDocumentsCount" id="ctl00_cphBody_hfKadDocumentsCount" value="22" />
+								
+							
+			</div>
+					
+		</div><input id="ctl00_cphBody_RadMultiPage_ClientState" name="ctl00_cphBody_RadMultiPage_ClientState" type="hidden" />
+	</div>
+			
+</div>
+	</div>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td id="footer">
+                    Включение сведений, подлежащих опубликованию в соответствии с Федеральным законом от 26 октября 2002 г. № 127-ФЗ «О несостоятельности (банкротстве)» в Единый федеральный реестр сведений о банкротстве, осуществляется с 1 апреля 2011 г. (пункт 2 статьи 4 Федерального закона от 28 декабря 2010 г. № 429-ФЗ) <br/>
+                    <a class="link" href="http://group.interfax.ru/ftproot/files/politika.pdf">
+                        Политика АО "Интерфакс" в отношении обработки и защиты персональных данных
+                    </a>
+                </td>
+            </tr>
+        </table>
+    
+<script type="text/javascript">
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("ctl00_PrivateOffice1_ValidationSummary1"));
+var Page_Validators =  new Array(document.getElementById("ctl00_PrivateOffice1_RequiredFieldValidator1"), document.getElementById("ctl00_PrivateOffice1_revEmailValidator"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var ctl00_PrivateOffice1_ValidationSummary1 = document.all ? document.all["ctl00_PrivateOffice1_ValidationSummary1"] : document.getElementById("ctl00_PrivateOffice1_ValidationSummary1");
+ctl00_PrivateOffice1_ValidationSummary1.showmessagebox = "True";
+ctl00_PrivateOffice1_ValidationSummary1.showsummary = "False";
+ctl00_PrivateOffice1_ValidationSummary1.displaymode = "List";
+ctl00_PrivateOffice1_ValidationSummary1.validationGroup = "RestorePsw";
+var ctl00_PrivateOffice1_RequiredFieldValidator1 = document.all ? document.all["ctl00_PrivateOffice1_RequiredFieldValidator1"] : document.getElementById("ctl00_PrivateOffice1_RequiredFieldValidator1");
+ctl00_PrivateOffice1_RequiredFieldValidator1.controltovalidate = "ctl00_PrivateOffice1_tbEmailForPassword";
+ctl00_PrivateOffice1_RequiredFieldValidator1.focusOnError = "t";
+ctl00_PrivateOffice1_RequiredFieldValidator1.errormessage = "Укажите Ваш e-mail";
+ctl00_PrivateOffice1_RequiredFieldValidator1.display = "None";
+ctl00_PrivateOffice1_RequiredFieldValidator1.validationGroup = "RestorePsw";
+ctl00_PrivateOffice1_RequiredFieldValidator1.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_PrivateOffice1_RequiredFieldValidator1.initialvalue = "";
+var ctl00_PrivateOffice1_revEmailValidator = document.all ? document.all["ctl00_PrivateOffice1_revEmailValidator"] : document.getElementById("ctl00_PrivateOffice1_revEmailValidator");
+ctl00_PrivateOffice1_revEmailValidator.controltovalidate = "ctl00_PrivateOffice1_tbEmailForPassword";
+ctl00_PrivateOffice1_revEmailValidator.focusOnError = "t";
+ctl00_PrivateOffice1_revEmailValidator.errormessage = "Поле «E-mail» содержит некорректный адрес";
+ctl00_PrivateOffice1_revEmailValidator.display = "None";
+ctl00_PrivateOffice1_revEmailValidator.validationGroup = "RestorePsw";
+ctl00_PrivateOffice1_revEmailValidator.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_PrivateOffice1_revEmailValidator.validationexpression = "^([a-zA-Z0-9]+([-_\\.\\+]?[a-zA-Z0-9]+)*)\\@(([a-zA-Z0-9]+([-\\.][a-zA-Z0-9]+)*\\.[a-zA-Z0-9]+)|([а-яА-ЯёЁ0-9]+([-\\.][а-яА-ЯёЁ0-9]+)*\\.[а-яА-ЯёЁ0-9]+))$";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+(function(id) {
+    var e = document.getElementById(id);
+    if (e) {
+        e.dispose = function() {
+            Array.remove(Page_ValidationSummaries, document.getElementById(id));
+        }
+        e = null;
+    }
+})('ctl00_PrivateOffice1_ValidationSummary1');
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadWindowManager, {"autoSizeBehaviors":5,"clientStateFieldID":"ctl00_radWindowManager_ClientState","destroyOnClose":true,"formID":"aspnetForm","iconUrl":"/favicon.ico","minimizeIconUrl":"/favicon.ico","name":"radWindowManager","offsetElementID":"main","reloadOnShow":true,"restrictionZoneID":"main","showContentDuringLoad":false,"skin":"Default","visibleStatusbar":false,"windowControls":"[]"}, null, null, $get("ctl00_radWindowManager"));
+});
+
+document.getElementById('ctl00_PrivateOffice1_RequiredFieldValidator1').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_PrivateOffice1_RequiredFieldValidator1'));
+}
+
+document.getElementById('ctl00_PrivateOffice1_revEmailValidator').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_PrivateOffice1_revEmailValidator'));
+}
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadToolTip, {"_cssClass":"","_manualCloseButtonText":"Close","clientStateFieldID":"ctl00_PrivateOffice1_RadToolTip1_ClientState","formID":"aspnetForm","hideEvent":4,"position":31,"showCallout":false,"showEvent":2,"skin":"Default","targetControlID":"ctl00_PrivateOffice1_hlRecPsw","width":"280px"}, null, null, $get("ctl00_PrivateOffice1_RadToolTip1"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadTabStrip, {"_selectedIndex":0,"_skin":"TestTheme","clientStateFieldID":"ctl00_cphBody_RadTabStrip_ClientState","multiPageID":"ctl00_cphBody_RadMultiPage","selectedIndexes":["0"],"tabData":[{"value":"Messages","_implPageViewID":"ctl00_cphBody_Messages"},{"value":"KadDocuments","_implPageViewID":"ctl00_cphBody_KadDocuments"}]}, {"tabSelected":onClientTabSelected}, null, $get("ctl00_cphBody_RadTabStrip"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadMultiPage, {"clientStateFieldID":"ctl00_cphBody_RadMultiPage_ClientState","pageViewData":[{"id":"ctl00_cphBody_Messages"},{"id":"ctl00_cphBody_AuReports"},{"id":"ctl00_cphBody_KadDocuments"},{"id":"ctl00_cphBody_Trades"}],"selectedIndex":0}, null, null, $get("ctl00_cphBody_RadMultiPage"));
+});
+//]]>
+</script>
+</form>
+
+    <input type="hidden" id="userAgreementUrl" value="http://bankrot.fedresurs.ru/help/prod/CurrentRules.pdf" />
+    <input type="hidden" id="authByCertificatePostUrl" value="https://bankrot.fedresurs.ru/backoffice/Authentication/Authenticate" />
+    <input type="hidden" id="digitalSigningActiveXVersion" value="2" />
+    <input type="hidden" id="dataForSigningField" name="dataForSigning" value="0uXx8u7i4P8g8fLw7urgIOTr/yDv8O7i5fDq6CDv7uTv6PHoLg==" />
+    <input type="hidden" id="signedDataField" name="signedData" />
+    <input type="hidden" id="signatureField" name="signature" />
+
+    <script type="text/javascript" > (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter45311283 = new Ya.Metrika({ id:45311283, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/45311283" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+</body>
+</html>
